@@ -1,0 +1,495 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 15 Oct 2025, 00:16:23
+    Author     : Vickeller.01
+*/
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Vending Machine */
+.vending-machine {
+  background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  border: 6px solid #1a252f;
+}
+
+/* Machine Header */
+.machine-header {
+  background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+  padding: 12px;
+  text-align: center;
+  border-bottom: 3px solid #a93226;
+}
+
+.machine-header h1 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.brand-logo {
+  color: #ffeaa7;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Reduced FSM diagram padding and spacing */
+.fsm-diagram {
+  padding: 12px;
+  background: #1a252f;
+  border-bottom: 2px solid #2c3e50;
+}
+
+.state-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+/* Made state nodes smaller */
+.state-node {
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+  border: 2px solid #4a5f7f;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.state-node.active {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-color: #5dade2;
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+  transform: scale(1.15);
+}
+
+.state-label {
+  color: #ecf0f1;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: "Courier New", monospace;
+}
+
+.state-amount {
+  color: #95a5a6;
+  font-size: 8px;
+  font-family: "Courier New", monospace;
+}
+
+.state-node.active .state-label {
+  color: #ffffff;
+}
+
+.state-node.active .state-amount {
+  color: #ffeaa7;
+}
+
+.state-arrow {
+  color: #4a5f7f;
+  font-size: 16px;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.state-arrow.active {
+  color: #3498db;
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+}
+
+/* Pulse animation for active state */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+.state-node.pulse {
+  animation: pulse 0.6s ease-in-out 2;
+}
+
+/* Reduced display panel padding */
+.display-panel {
+  padding: 12px;
+  background: #1a252f;
+}
+
+.display-screen {
+  background: #0a0e13;
+  border: 3px solid #2c3e50;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.status-message {
+  color: #00ff88;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.fsm-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #74b9ff;
+  font-size: 12px;
+  font-family: "Courier New", monospace;
+  margin-bottom: 8px;
+}
+
+.fsm-state .label {
+  color: #95a5a6;
+}
+
+.fsm-state .state-value {
+  color: #ffeaa7;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255, 234, 167, 0.4);
+}
+
+/* Amount info display */
+.amount-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #2c3e50;
+}
+
+.amount-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+}
+
+.amount-label {
+  color: #95a5a6;
+}
+
+.amount-value {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.amount-value.deposited {
+  color: #00ff88;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+.amount-value.remaining {
+  color: #ff6b6b;
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+}
+
+/* Reduced product section padding */
+.product-section {
+  padding: 12px;
+  background: #34495e;
+}
+
+.section-title {
+  color: #ecf0f1;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* Reduced product item padding */
+.product-item {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid #2574a9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.product-icon {
+  font-size: 36px;
+  margin-bottom: 4px;
+}
+
+.product-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.product-price {
+  color: #ffeaa7;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Reduced coin section padding */
+.coin-section {
+  padding: 12px;
+  background: #2c3e50;
+}
+
+.coin-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+}
+
+.coin-btn {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.coin-btn::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.coin-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.coin-btn:active {
+  transform: scale(0.95);
+}
+
+/* Coin insert animation */
+@keyframes coinInsert {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.coin-btn.coin-insert {
+  animation: coinInsert 0.3s ease;
+}
+
+.coin-value {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* Added reset button styles */
+.reset-container {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Reduced dispenser section padding */
+.dispenser-section {
+  padding: 12px;
+  background: #1a252f;
+}
+
+.change-tray {
+  background: linear-gradient(180deg, #7f8c8d 0%, #95a5a6 100%);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 3px solid #5d6d7e;
+}
+
+.tray-icon {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.tray-label {
+  color: #2c3e50;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .state-node {
+    width: 40px;
+    height: 40px;
+  }
+
+  .state-label {
+    font-size: 10px;
+  }
+
+  .state-amount {
+    font-size: 7px;
+  }
+
+  .state-arrow {
+    font-size: 14px;
+  }
+
+  /* Added responsive sizing for coin buttons */
+  .coin-btn {
+    width: 65px;
+    height: 65px;
+  }
+
+  .coin-value {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .machine-header h1 {
+    font-size: 20px;
+  }
+
+  .status-message {
+    font-size: 14px;
+  }
+
+  .coin-buttons {
+    gap: 6px;
+  }
+
+  /* Made coin buttons smaller for mobile */
+  .coin-btn {
+    width: 55px;
+    height: 55px;
+  }
+
+  .coin-value {
+    font-size: 12px;
+  }
+
+  .product-icon {
+    font-size: 30px;
+  }
+
+  .state-node {
+    width: 35px;
+    height: 35px;
+  }
+
+  .state-label {
+    font-size: 9px;
+  }
+
+  .state-amount {
+    font-size: 7px;
+  }
+
+  .state-arrow {
+    font-size: 12px;
+  }
+}
+/* End of style.css */
