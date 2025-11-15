@@ -44,7 +44,7 @@
     <div class="container">
         <div class="vending-machine">
             <div class="machine-header">
-                <h1>$1.00 Soda Machine</h1>
+                <h1>$1.00 Energy Drink Machine</h1>
                 <div class="brand-logo">VEND-O-MATIC</div>
             </div>
 

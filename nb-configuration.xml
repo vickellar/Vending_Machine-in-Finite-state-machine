@@ -17,5 +17,6 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>Tomcat</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
         <org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>ide</org-netbeans-modules-maven-jaxws.rest_2e_config_2e_type>
         <org-netbeans-modules-projectapi.jsf_2e_language>Facelets</org-netbeans-modules-projectapi.jsf_2e_language>
+        <org-zeroturnaround-jrebel-netbeans.rebelXmlGenerationInvariantToken>PGFwcGxpY2F0aW9uIGdlbmVyYXRlZC1ieT0ibmV0YmVhbnMiPjxjbGFzc3BhdGg+PGRpciBuYW1lPSJDOi9Vc2Vycy9WaWNrZWxsZXIuMDEvRG9jdW1lbnRzL0RvY3VtZW50cy9OZXRCZWFuc1Byb2plY3RzL1ZlbmRpbmdNYWNoaW5lL3RhcmdldC9jbGFzc2VzIj48L2Rpcj48L2NsYXNzcGF0aD48d2ViPjxsaW5rIHRhcmdldD0iLyI+PGRpciBuYW1lPSJDOi9Vc2Vycy9WaWNrZWxsZXIuMDEvRG9jdW1lbnRzL0RvY3VtZW50cy9OZXRCZWFuc1Byb2plY3RzL1ZlbmRpbmdNYWNoaW5lL3NyYy9tYWluL3dlYmFwcCI+PC9kaXI+PC9saW5rPjwvd2ViPjwvYXBwbGljYXRpb24+</org-zeroturnaround-jrebel-netbeans.rebelXmlGenerationInvariantToken>
     </properties>
 </project-shared-configuration>
