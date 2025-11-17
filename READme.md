@@ -44,4 +44,4 @@ Ensure error and final states lock further input until reset.
 License
 MIT License (or specify your own)
 
-For questions or improvements, contact the project maintainer.
+For questions or improvements, contact me
